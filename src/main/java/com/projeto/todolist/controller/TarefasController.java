@@ -29,44 +29,34 @@ public class TarefasController {
     @Autowired
     TodoMongoServices servicosDoMongo;
     
-    //Chamadas TODOList
-    // @RequestMapping(method = RequestMethod.POST, value = "/adicionar")
-    //     public void adicionarTarefas(@RequestBody Tarefas tarefa){
-    //         repositorioDeTarefas.adicionarTarefa(tarefa);
-    //     }
-
     @RequestMapping(method = RequestMethod.POST, value = "/adicionar")
         public void adicionarTarefas(@RequestBody Tarefas tarefa){
             servicosDoMongo.salvar(tarefa);
         }
+    
     @RequestMapping(method = RequestMethod.GET, value = "/listar")
         public List<Tarefas> listaTarefas(){
-            // return repositorioDeTarefas.listaDeTarefas();
             return servicosDoMongo.listarTarefasServ();
         }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/excluir")
         public boolean removerTarefas(@RequestParam String id){
-            // return repositorioDeTarefas.removerTarefa(id);
             return servicosDoMongo.removerTarefas(id);
-            
         }
+    
     @RequestMapping(method = RequestMethod.GET, value = "/detalhes")
         public Tarefas detalhesTarefas(@RequestParam (value = "id") String id){
-            // return repositorioDeTarefas.detalhesTarefa(id);
             return servicosDoMongo.detalhesDaTarefa(id);
         }
+    
     @RequestMapping(method = RequestMethod.PUT, value = "/editar")
         public void editarTarefas(@RequestBody Tarefas tarefa){
         servicosDoMongo.editarTarefa(tarefa);
-            //return repositorioDeTarefas.editarTarefas(tarefa);
-            
         }
+    
     @RequestMapping(method = RequestMethod.PUT, value = "/concluir")
         public boolean concluirTarefas(@RequestParam (value = "id") String id){
-            // return repositorioDeTarefas.realizarTarefa(ediTarefas);
             return servicosDoMongo.concluirTarefa(id);
-            
         }
     
     //GETAPI
